@@ -1,14 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text ,View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import TestComponent from "./componentes/TestComponent";
 
-export default function App() {
-  return (
+function HomeScreen() {
+  return(
     <View style={styles.container}>
-      {/* <Text>Open up App.js to start working on your app!</Text> */}
       <TestComponent/>
     </View>
+  );
+
+}
+
+const STACK = createStackNavigator();
+
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <STACK.Navigator>
+        <STACK.Screen name="Home" component={HomeScreen} />
+      </STACK.Navigator>
+    </NavigationContainer>
+
   );
 }
 
